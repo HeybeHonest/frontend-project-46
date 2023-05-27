@@ -51,7 +51,7 @@ const getDiffInfo = (obj1, obj2) => {
         case 'unchanged':
           return `    ${diff.key}: ${diff.value}`;
         case 'changed':
-          return (`  - ${diff.key}: ${diff.value1} \n  + ${diff.key}: ${diff.value2}`);
+          return (`  - ${diff.key}: ${diff.value1}\n  + ${diff.key}: ${diff.value2}`);
         case 'added':
           return `  + ${diff.key}: ${diff.value}`;
         default:
@@ -60,7 +60,7 @@ const getDiffInfo = (obj1, obj2) => {
     });
     return `{\n${result.join('\n')}\n}`;
   };
-  const getAbsolutPath = (filePath) => path.resolve(process.cwd(), 'src', filePath);
+  const getAbsolutPath = (filePath) => path.resolve(process.cwd(), filePath);
   
   const readFile = (filePath) => fs.readFileSync(getAbsolutPath(filePath), 'utf-8');
   
