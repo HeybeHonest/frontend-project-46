@@ -1,26 +1,19 @@
+import * as path from 'path';
+import { readFileSync } from 'fs';
 import genDiff from '../src/index.js';
 import { expect, test } from '@jest/globals';
-import * as fs from 'fs';
+import process from 'process';
 
-const JSONpath1 = 'file1.json';
-const JSONpath2 = 'file2.json';
-const YMLpath1 = 'file1.yml';
-const YMLpath2 = 'file2.yml';
+const firstAnswerPath = path.resolve(process.cwd(), '__fixtures__/JSONExpectedResult');
+const firstAnswer = readFileSync(firstAnswerPath, 'utf8');
 
-const JSONExpectedResult = fs.readFileSync('__fixtures__/JSONExpectedResult', 'utf-8');
-const YMLExpectedResult = fs.readFileSync('__fixtures__/YMLExpectedResult', 'utf-8');
 
-test.each([
-    {
-        a: JSONpath1, b: JSONpath2, result: JSONExpectedResult,
-    },
-
-    {
-        a: YMLpath1, b:YMLpath2, result: YMLExpectedResult,
-    },
-
-])('gendiff $a $b', ({
-    a, b, result,
-}) => {
-    expect(genDiff(a, b)).toBe(result);
+test('genDiff JSON plain', () => {
+  expect(genDiff('file1.json', 'file2.json')).toEqual(firstAnswer);
 });
+
+test('genDiff YML plain', () => {
+  expect(genDiff('file1.yml', 'file2.yml')).toEqual(firstAnswer);
+});
+
+
