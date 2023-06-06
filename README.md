@@ -7,3 +7,5 @@
 <a href="https://codeclimate.com/github/HeybeHonest/frontend-project-46/test_coverage"><img src="https://api.codeclimate.com/v1/badges/93ae8c506a5d4206a763/test_coverage" /></a>
 
 <a href=https://asciinema.org/a/YeruHZT8J2CG1tNuh54Hll3H1>Asciinema genDiff</a>
+
+<a href=https://asciinema.org/a/ccVv4t4KIQDI1WgXXtqn3vBt3>Asciinema genDiff with --format option</a>

@@ -18,7 +18,7 @@ const formatPlain = (diff) => {
         return node.children.flatMap((child) => formatNode(child, fullPath));
       case 'added':
         return `Property '${fullPath}' was added with value: ${formatValue(node.value)}`;
-      case 'removed':
+      case 'deleted':
         return `Property '${fullPath}' was removed`;
       case 'changed':
         return `Property '${fullPath}' was updated. From ${formatValue(node.value1)} to ${formatValue(node.value2)}`;
@@ -34,3 +34,4 @@ const formatPlain = (diff) => {
 };
 
 export default formatPlain;
+
