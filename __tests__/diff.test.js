@@ -4,7 +4,7 @@ import genDiff from '../src/index.js';
 import { expect, test } from '@jest/globals';
 import process from 'process';
 
-const firstAnswerPath = path.resolve(process.cwd(), '__fixtures__/JSONExpectedResult');
+const firstAnswerPath = path.resolve(process.cwd(), '__fixtures__/JSONExpectedResult.txt');
 const firstAnswer = readFileSync(firstAnswerPath, 'utf8');
 
 
