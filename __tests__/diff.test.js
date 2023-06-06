@@ -1,22 +1,20 @@
-import { test, expect } from '@jest/globals';
-import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
-import fs from 'fs';
+import * as path from 'path';
+import { readFileSync } from 'fs';
 import genDiff from '../src/index.js';
+import { expect, test } from '@jest/globals';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const __dirname = path.resolve();
 
-const getPath = (filename) => join(__dirname, '..', '__fixtures__', filename);
+const getPath = (filename) => path.join(__dirname, '__fixtures__', filename);
 
 const resultPathStylish = getPath('resultStylish.txt');
-const stylish = fs.readFileSync(resultPathStylish, 'utf-8');
+const stylish = readFileSync(resultPathStylish, 'utf-8');
 
 const resultPathPlain = getPath('resultPlain.txt');
-const plain = fs.readFileSync(resultPathPlain, 'utf-8');
+const plain = readFileSync(resultPathPlain, 'utf-8');
 
 const resultPathJSON = getPath('resultJSON.txt');
-const JSON = fs.readFileSync(resultPathJSON, 'utf-8');
+const JSON = readFileSync(resultPathJSON, 'utf-8');
 
 test('generate difference between JSONs files', () => {
   expect(genDiff(getPath('file1.json'), getPath('file2.json'))).toEqual(stylish);
@@ -37,6 +35,7 @@ test('generate difference between YMAL/YML files', () => {
 test('generate difference between YMAL and JSON files', () => {
   expect(genDiff(getPath('file1.json'), getPath('file2.yml'))).toEqual(stylish);
 });
+
 
 
 
