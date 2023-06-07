@@ -10,33 +10,33 @@ const formatValue = (value, depth) => {
   return `{\n${lines.join('\n')}\n${getIndent(depth)}}`;
 };
 
+const formatNode = (node, nodeDepth) => {
+  const nodeIndent = getIndent(nodeDepth);
+  const {
+    type, key, value, oldValue, newValue, children,
+  } = node;
+
+  switch (type) {
+    case 'added':
+      return `${nodeIndent}  + ${key}: ${formatValue(value, nodeDepth + 1)}`;
+    case 'deleted':
+      return `${nodeIndent}  - ${key}: ${formatValue(value, nodeDepth + 1)}`;
+    case 'unchanged':
+      return `${nodeIndent}    ${key}: ${formatValue(value, nodeDepth + 1)}`;
+    case 'changed':
+      return [
+        `${nodeIndent}  - ${key}: ${formatValue(oldValue, nodeDepth + 1)}`,
+        `${nodeIndent}  + ${key}: ${formatValue(newValue, nodeDepth + 1)}`,
+      ].join('\n');
+    case 'nested':
+      return `${nodeIndent}    ${key}: ${formatDiff(children, nodeDepth + 1)}`;
+    default:
+      throw new Error(`Unknown node type: ${type}`);
+  }
+};
+
 const formatDiff = (diff, depth = 0) => {
   const indent = getIndent(depth);
-
-  const formatNode = (node, nodeDepth = 0) => {
-    const nodeIndent = getIndent(nodeDepth);
-    const {
-      type, key, value, oldValue, newValue, children,
-    } = node;
-
-    switch (type) {
-      case 'added':
-        return `${nodeIndent}  + ${key}: ${formatValue(value, nodeDepth + 1)}`;
-      case 'deleted':
-        return `${nodeIndent}  - ${key}: ${formatValue(value, nodeDepth + 1)}`;
-      case 'unchanged':
-        return `${nodeIndent}    ${key}: ${formatValue(value, nodeDepth + 1)}`;
-      case 'changed':
-        return [
-          `${nodeIndent}  - ${key}: ${formatValue(oldValue, nodeDepth + 1)}`,
-          `${nodeIndent}  + ${key}: ${formatValue(newValue, nodeDepth + 1)}`,
-        ].join('\n');
-      case 'nested':
-        return `${nodeIndent}    ${key}: ${formatDiff(children, nodeDepth + 1)}`;
-      default:
-        throw new Error(`Unknown node type: ${type}`);
-    }
-  };
 
   const lines = diff.map((node) => formatNode(node, depth));
   return `{\n${lines.join('\n')}\n${indent}}`;
