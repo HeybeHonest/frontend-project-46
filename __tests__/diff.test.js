@@ -35,37 +35,3 @@ test('generate difference between YMAL/YML files', () => {
 test('generate difference between YMAL and JSON files', () => {
   expect(genDiff(getPath('file1.json'), getPath('file2.yml'))).toEqual(stylish);
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import * as path from 'path';
-// import { readFileSync } from 'fs';
-// import genDiff from '../src/index.js';
-// import { expect, test } from '@jest/globals';
-// import process from 'process';
-
-// const firstAnswerPath = path.resolve(process.cwd(), '__fixtures__/JSONExpectedResult.txt');
-// const firstAnswer = readFileSync(firstAnswerPath, 'utf8');
-
-
-// test('genDiff JSON plain', () => {
-//   expect(genDiff('file1.json', 'file2.json')).toEqual(firstAnswer);
-// });
-
-// test('genDiff YML plain', () => {
-//   expect(genDiff('file1.yml', 'file2.yml')).toEqual(firstAnswer);
-// });
-
-
