@@ -10,6 +10,7 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
+    "@jest/globals": "^29.5.0",
     "commander": "^10.0.1",
     "js-yaml": "^4.1.0",
     "lodash": "^4.17.21"

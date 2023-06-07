@@ -1,7 +1,8 @@
+import { expect, test } from '@jest/globals';
 import * as path from 'path';
 import { readFileSync } from 'fs';
 import genDiff from '../index.js';
-import { expect, test } from '@jest/globals';
+
 
 const __dirname = path.resolve();
 
