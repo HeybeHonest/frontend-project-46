@@ -8,6 +8,12 @@ const formatPlain = (diff) => {
     if (_.isString(value)) {
       return `'${value}'`;
     }
+    if (_.isBoolean(value)) {
+      return value ? 'true' : 'false';
+    }
+    if (_.isNull(value)) {
+      return 'null';
+    }
     return String(value);
   };
 
@@ -21,7 +27,7 @@ const formatPlain = (diff) => {
       case 'deleted':
         return `Property '${fullPath}' was removed`;
       case 'changed':
-        return `Property '${fullPath}' was updated. From ${formatValue(node.value1)} to ${formatValue(node.value2)}`;
+        return `Property '${fullPath}' was updated. From ${formatValue(node.oldValue)} to ${formatValue(node.newValue)}`;
       case 'unchanged':
         return [];
       default:
@@ -34,4 +40,3 @@ const formatPlain = (diff) => {
 };
 
 export default formatPlain;
-
