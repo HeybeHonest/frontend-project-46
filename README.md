@@ -8,7 +8,7 @@
 
 <a href=https://asciinema.org/a/YeruHZT8J2CG1tNuh54Hll3H1>Asciinema genDiff without format options</a>
 
-<a href=https://asciinema.org/a/ccVv4t4KIQDI1WgXXtqn3vBt3>Asciinema genDiff with --format option "plain"</a>
+<a href=https://asciinema.org/a/WzZ9eYTWNnn6CmCAUX61UNmG1>Asciinema genDiff with --format option "plain"</a>
 
 <a href=https://asciinema.org/a/UKwOo9i5zP5ISRL5KTGOhOEmV>Asciinema genDiff with --format option "json"</a>
 
