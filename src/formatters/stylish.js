@@ -16,8 +16,8 @@ const formatDiff = (diff, depth = 0) => {
   const formatNode = (node, nodeDepth = 0) => {
     const nodeIndent = getIndent(nodeDepth);
     const {
-       type, key, value, oldValue, newValue, children 
-      } = node;
+      type, key, value, oldValue, newValue, children,
+    } = node;
 
     switch (type) {
       case 'added':
