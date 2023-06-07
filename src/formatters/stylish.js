@@ -12,24 +12,25 @@ const formatValue = (value, depth) => {
 
 const formatDiff = (diff, depth = 0) => {
   const indent = getIndent(depth);
-  const formatNode = (node, depth = 0) => {
-    const indent = getIndent(depth);
+  
+  const formatNode = (node, nodeDepth = 0) => {
+    const nodeIndent = getIndent(nodeDepth);
     const { type, key, value, oldValue, newValue, children } = node;
 
     switch (type) {
       case 'added':
-        return `${indent}  + ${key}: ${formatValue(value, depth + 1)}`;
+        return `${nodeIndent}  + ${key}: ${formatValue(value, nodeDepth + 1)}`;
       case 'deleted':
-        return `${indent}  - ${key}: ${formatValue(value, depth + 1)}`;
+        return `${nodeIndent}  - ${key}: ${formatValue(value, nodeDepth + 1)}`;
       case 'unchanged':
-        return `${indent}    ${key}: ${formatValue(value, depth + 1)}`;
+        return `${nodeIndent}    ${key}: ${formatValue(value, nodeDepth + 1)}`;
       case 'changed':
         return [
-          `${indent}  - ${key}: ${formatValue(oldValue, depth + 1)}`,
-          `${indent}  + ${key}: ${formatValue(newValue, depth + 1)}`,
+          `${nodeIndent}  - ${key}: ${formatValue(oldValue, nodeDepth + 1)}`,
+          `${nodeIndent}  + ${key}: ${formatValue(newValue, nodeDepth + 1)}`,
         ].join('\n');
       case 'nested':
-        return `${indent}    ${key}: ${formatDiff(children, depth + 1)}`;
+        return `${nodeIndent}    ${key}: ${formatDiff(children, nodeDepth + 1)}`;
       default:
         throw new Error(`Unknown node type: ${type}`);
     }
