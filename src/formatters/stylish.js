@@ -37,7 +37,7 @@ const formatDiff = (diff, depth = 0) => {
   };
 
   const lines = diff.map((node) => formatNode(node, depth));
-  return `{\n${lines.join('\n')}\n${indent}}`;
+  return `{\n${lines.join('\n')}\n${indent}\n}`;
 };
 
 export default formatDiff;
