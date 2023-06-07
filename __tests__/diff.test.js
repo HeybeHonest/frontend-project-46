@@ -3,7 +3,6 @@ import * as path from 'path';
 import { readFileSync } from 'fs';
 import genDiff from '../index.js';
 
-
 const __dirname = path.resolve();
 
 const getPath = (filename) => path.join(__dirname, '__fixtures__', filename);

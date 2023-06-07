@@ -10,6 +10,12 @@ const formatValue = (value, depth) => {
   return `{\n${lines.join('\n')}\n${getIndent(depth)}}`;
 };
 
+const formatDiff = (diff, depth = 0) => {
+  const indent = getIndent(depth);
+  const lines = diff.map((node) => formatNode(node, depth));
+  return `{\n${lines.join('\n')}\n${indent}}`;
+};
+
 const formatNode = (node, depth = 0) => {
   const indent = getIndent(depth);
   const {
@@ -38,12 +44,6 @@ const formatNode = (node, depth = 0) => {
     default:
       throw new Error(`Unknown node type: ${type}`);
   }
-};
-
-const formatDiff = (diff, depth = 0) => {
-  const indent = getIndent(depth);
-  const lines = diff.map((node) => formatNode(node, depth));
-  return `{\n${lines.join('\n')}\n${indent}}`;
 };
 
 export default formatDiff;
