@@ -14,6 +14,7 @@ const formatDiff = (diff, format) => {
     default:
       throw new Error(`Unsupported format: ${format}`);
   }
+
 };
 
 const generateDiff = (fileName1, fileName2, format = 'stylish') => {
