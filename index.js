@@ -1,7 +1,7 @@
-import { getAbsolutePath, getParsedData, calculateDiff } from './utils.js';
-import formatStylish from './formatters/stylish.js';
-import formatPlain from './formatters/plain.js';
-import formatJSON from './formatters/json.js';
+import { getAbsolutePath, getParsedData, calculateDiff } from './src/utils.js';
+import formatStylish from './src/formatters/stylish.js';
+import formatPlain from './src/formatters/plain.js';
+import formatJSON from './src/formatters/json.js';
 
 const formatDiff = (diff, format) => {
   switch (format) {
