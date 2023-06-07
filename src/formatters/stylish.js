@@ -12,7 +12,7 @@ const formatValue = (value, depth) => {
 
 const formatDiff = (diff, depth = 0) => {
   const indent = getIndent(depth);
-  
+
   const formatNode = (node, nodeDepth = 0) => {
     const nodeIndent = getIndent(nodeDepth);
     const { type, key, value, oldValue, newValue, children } = node;
