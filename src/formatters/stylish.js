@@ -1,3 +1,15 @@
+const getIndent = (depth) => ' '.repeat(depth * 4);
+
+const formatValue = (value, depth) => {
+  if (typeof value !== 'object' || value === null) {
+    return value;
+  }
+
+  const indent = getIndent(depth + 1);
+  const lines = Object.entries(value || {}).map(([key, val]) => `${indent}${key}: ${formatValue(val, depth + 1)}`);
+  return `{\n${lines.join('\n')}\n${getIndent(depth)}}`;
+};
+
 const formatDiff = (diff, depth = 0) => {
   const indent = getIndent(depth);
 
@@ -28,18 +40,6 @@ const formatDiff = (diff, depth = 0) => {
 
   const lines = diff.map((node) => formatNode(node, depth));
   return `{\n${lines.join('\n')}\n${indent}}`;
-};
-
-const getIndent = (depth) => ' '.repeat(depth * 4);
-
-const formatValue = (value, depth) => {
-  if (typeof value !== 'object' || value === null) {
-    return value;
-  }
-
-  const indent = getIndent(depth + 1);
-  const lines = Object.entries(value || {}).map(([key, val]) => `${indent}${key}: ${formatValue(val, depth + 1)}`);
-  return `{\n${lines.join('\n')}\n${getIndent(depth)}}`;
 };
 
 export default formatDiff;
