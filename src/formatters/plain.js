@@ -13,7 +13,7 @@ const formatValue = (value) => {
   if (_.isNull(value)) {
     return 'null';
   }
-  return String(value);
+  return value;
 };
 
 const formatNode = (node, path = '') => {
