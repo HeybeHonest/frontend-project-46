@@ -1,8 +1,8 @@
 import path from 'path';
+import process from 'process';
 import fs from 'fs';
 import parse from './parsers.js';
 import calculateDiff from './genDiff.js';
-import process from 'process';
 
 const fixturesDirPath = path.resolve(process.cwd(), '__fixtures__');
 
