@@ -12,8 +12,7 @@ const formatDiff = (diff, format) => {
       return formatJSON(diff);
     default:
       throw new Error(`Unsupported format: ${format}`);
-    }
-  };
+  }
+};
 
-  export default formatDiff;
-  
+export default formatDiff;
