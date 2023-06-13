@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-const calculateDiff = (obj1, obj2) => {
+const genDiff = (obj1, obj2) => {
   const keys1 = Object.keys(obj1);
   const keys2 = Object.keys(obj2);
   const uniq = _.union(keys1, keys2);
@@ -30,7 +30,7 @@ const calculateDiff = (obj1, obj2) => {
       return {
         type: 'nested',
         key,
-        children: calculateDiff(value1, value2),
+        children: genDiff(value1, value2),
       };
     }
 
@@ -53,4 +53,4 @@ const calculateDiff = (obj1, obj2) => {
   return diff;
 };
 
-export default calculateDiff;
+export default genDiff;

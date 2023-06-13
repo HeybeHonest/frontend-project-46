@@ -7,12 +7,6 @@ const formatValue = (value) => {
   if (_.isString(value)) {
     return `'${value}'`;
   }
-  if (_.isBoolean(value)) {
-    return value ? 'true' : 'false';
-  }
-  if (_.isNull(value)) {
-    return 'null';
-  }
   return value;
 };
 
